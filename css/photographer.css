@@ -35,11 +35,34 @@
     line-height: 23px;
     color: #525252;
 }
+.photograph-creations {
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
 .photograph-creations label {
     font-weight: bold;
     font-size: 18px;
     line-height: 23px;
     color: #000000;
+    margin-right: 25px
+}
+
+.photograph-creations img, .photograph-creations video {
+    width: 350px;
+    height: 300px;
+    border-radius: 5px;
+    object-fit: cover;
+}
+.photograph-creations h3 {
+    font-size: 24px;
+    line-height: 31px;
+    color: #911C1C;
+}
+.photograph-creations article {
+    margin-bottom: 20px;
 }
 
 .contact_button {
