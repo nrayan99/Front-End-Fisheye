@@ -3,8 +3,7 @@ async function getPhotographers() {
         // Penser à remplacer par les données récupérées dans le json
     const res = await fetch('data/photographers.json')
     const jsonRes = await res.json()
-    const photographers = await jsonRes.photographers 
-           console.log(jsonRes, photographers) 
+    const photographers = await jsonRes.photographers
     return ({
         photographers: photographers})
 
