@@ -9,10 +9,23 @@ function photographerMediaFactory(data) {
         const media = video ? document.createElement( 'video' ) : document.createElement( 'img' )
         media.setAttribute('src', video ? mediaVideo : mediaPicture)
         const h3 = document.createElement('h3')
-        h3.textContent = title 
+        const likesNb = document.createElement( 'span' )
+        const cardInfos = document.createElement('div')
+        const cardLikes = document.createElement('div')
+        cardLikes.classList.add('card-likes')
+        const heart = document.createElement('img')
+        heart.setAttribute('src','assets/icons/heart.png')
+        heart.classList.add('heart-img')
+        cardInfos.classList.add('card-infos')
+        likesNb. textContent = likes
+        h3.textContent = title
+        cardLikes.appendChild(likesNb)
+        cardLikes.appendChild(heart)
+        cardInfos.appendChild(h3)
+        cardInfos.appendChild(cardLikes)
         article.appendChild(media)
-        article.appendChild(h3);
+        article.appendChild(cardInfos);
         return (article);
     }
-    return { getMediaCardDOM }
+    return { getMediaCardDOM, likes }
 }

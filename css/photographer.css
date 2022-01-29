@@ -36,11 +36,10 @@
     color: #525252;
 }
 .photograph-creations {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(360px,1fr))  [col-end] 350px;
     margin-top: 10px;
-    display: flex;
     align-items: center;
-    flex-wrap: wrap;
-    justify-content: space-between;
 }
 .photograph-creations label {
     font-weight: bold;
@@ -56,10 +55,59 @@
     border-radius: 5px;
     object-fit: cover;
 }
-.photograph-creations h3 {
+.photograph-creations .card-infos {
+  width: 350px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.photograph-creations .card-infos .card-likes .heart-img {
+    width: 18px;
+    height: 18px;
+    margin-left: 10px;
+  }
+.photograph-creations .card-infos .card-likes span{
+    font-size: 18px;
+    font-weight: bold;
+    line-height: 31px;
+    text-align: right;
+    color: #911C1C;    
+}  
+.photograph-creations .card-infos .card-likes {
+    display: flex;
+    align-items: center;
+  }
+.photograph-creations .card-infos h3 {
     font-size: 24px;
     line-height: 31px;
     color: #911C1C;
+}
+.photograph-details {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    position: fixed;
+    bottom: -5px;
+    right: 36px;
+    width: 376px;
+    height: 50px;
+    background: #DB8876;
+    border-radius: 5px;
+}
+.photograph-details .like-details {
+    display: flex;
+    align-items: center;
+}
+.photograph-details .like-details img {
+    margin-left: 5px;
+    width: 17px;
+    height: 18px;
+}
+.photograph-details span {
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 31px;
+    color: #000000;
 }
 .photograph-creations article {
     margin-bottom: 20px;

@@ -39,5 +39,5 @@ function photographerFactory(data) {
         description.appendChild(tagLine)
         return (description)
     }
-    return { getUserCardDOM, getUserDescriptionDOM, picture, name }
+    return { getUserCardDOM, getUserDescriptionDOM, picture, name, price }
 }
