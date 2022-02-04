@@ -4,7 +4,7 @@ let params = (new URL(document.location)).searchParams;
 let photographerId = params.get('photographerId')
 let likes = 0 ;
 let data = []
-
+let price = 0;
 const photographHeader = document.querySelector(".photograph-header");
 const photographCreations = document.querySelector(".photograph-creations")
 const photographDetails = document.querySelector(".photograph-details")
@@ -39,22 +39,11 @@ async function displayData(photographer , medias) {
     img.setAttribute("alt", photographerModel.name)
     photographHeader.appendChild(img) 
     displayMedias(medias)
-    const likeDetails = document.createElement('div')
-    likeDetails.classList.add('like-details')
-    const totalLikes = document.createElement('span')
-    const heart = document.createElement('img')
-    heart.setAttribute('alt','likes')
-    const pricing = document.createElement('span')
-    pricing.textContent = `${photographerModel.price}€/jour`
-    heart.setAttribute('src','assets/icons/black-heart.png')
-    totalLikes.textContent = likes
-    likeDetails.appendChild(totalLikes)
-    likeDetails.appendChild(heart)
-    photographDetails.appendChild(likeDetails)
-    photographDetails.appendChild(pricing)
-
+    price = photographerModel.price
+    displayPhotographDetails(price)
 }
 function displayMedias(medias, filter) {
+    likes=0
     if (filter === 'Date') medias.sort((a, b) => ( Date.parse(b.date) - Date.parse(a.date)))
     else if (filter === 'Titre') medias.sort((a,b) => (a.title > b.title) ? 1 : ((b.title > a.title) ? -1 : 0))
     else medias.sort((a, b) => parseFloat(b.likes) - parseFloat(a.likes));
@@ -65,7 +54,27 @@ function displayMedias(medias, filter) {
         likes+= mediaModel.likes
     }
     )
+    const hearts = document.querySelectorAll(".photograph-creations .heart-img")
+    for (const heart of hearts) {
+     heart.addEventListener('click', event=>(toggleLike(event)))
+    }
 }
+function displayPhotographDetails(price) {
+    const likeDetails = document.createElement('div')
+    likeDetails.classList.add('like-details')
+    const totalLikes = document.createElement('span')
+    const heart = document.createElement('img')
+    heart.setAttribute('alt','likes')
+    const pricing = document.createElement('span')
+    pricing.textContent = `${price}€/jour`
+    heart.setAttribute('src','assets/icons/black-heart.png')
+    totalLikes.textContent = likes
+    likeDetails.appendChild(totalLikes)
+    likeDetails.appendChild(heart)
+    photographDetails.appendChild(likeDetails)
+    photographDetails.appendChild(pricing)
+}
+
 async function init() {
     data = await fetchData()
     const photographer = await getPhotographerById(photographerId,data.photographers)

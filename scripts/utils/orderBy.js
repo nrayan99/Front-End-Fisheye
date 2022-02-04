@@ -20,6 +20,8 @@ async function secondaryButtonsClick(e) {
   e.textContent = actualFilterText
   clickOrderBy()
   photographCreations.innerHTML=''
+  photographDetails.innerHTML=''
   const medias = await getMediasByPhotographerId(photographerId,data.media)
   displayMedias(medias, actualButtonText)
+  displayPhotographDetails(price)
 }
