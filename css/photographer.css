@@ -1,5 +1,13 @@
 #contact_modal {
     display: none;
+    width: 669px;
+    height: 90vh;
+    background: #DB8876;
+    border-radius: 5px;
+    margin: auto;
+    position: fixed;
+    top: 5%;
+    left: 25%;
 }
 #main {
     margin: 0 100px;
@@ -37,9 +45,14 @@
 }
 .photograph-creations {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(360px,1fr))  [col-end] 350px;
+    grid-gap: 5vw;
+    grid-template-columns: repeat(auto-fill,minmax(350px,1fr));
     margin-top: 10px;
     align-items: center;
+    margin-bottom: 20px;
+}
+.photograph-creations article {
+    width: 100%;
 }
 .photograph-creations label {
     font-weight: bold;
@@ -50,13 +63,13 @@
 }
 
 .photograph-creations img, .photograph-creations video {
-    width: 350px;
-    height: 300px;
+    width: 100%;
+    aspect-ratio: 350/300;
     border-radius: 5px;
     object-fit: cover;
 }
 .photograph-creations .card-infos {
-  width: 350px;
+  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -81,6 +94,10 @@
     font-size: 24px;
     line-height: 31px;
     color: #911C1C;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-weight: 500;
 }
 .photograph-details {
     display: flex;

@@ -46,6 +46,7 @@ async function displayData(photographer , medias) {
     likeDetails.classList.add('like-details')
     const totalLikes = document.createElement('span')
     const heart = document.createElement('img')
+    heart.setAttribute('alt','likes')
     const pricing = document.createElement('span')
     pricing.textContent = `${photographerModel.price}€/jour`
     heart.setAttribute('src','assets/icons/black-heart.png')
