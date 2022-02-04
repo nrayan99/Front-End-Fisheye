@@ -55,7 +55,7 @@
     margin-right: 10px;
 }
 .order-by-buttons {
-    margin-bottom: -150px;
+    margin-bottom: -130px;
     z-index: 1;
     width: 170px;
     height: 191px;
@@ -65,7 +65,7 @@
     background-color: white;
     height: 2px;
     position: relative;
-    margin: 0 auto;
+    margin: -5px auto;
 }
 .order-by .first-button {
     width: 170px;
@@ -96,7 +96,7 @@
     display: flex;
     align-items: center;
     padding-left: 20px;
-    margin-top: -10px;
+    margin-top: 0px;
 }
 .order-by .clicked {
     display: none;

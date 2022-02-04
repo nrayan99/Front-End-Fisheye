@@ -19,14 +19,14 @@
           <label for="order-by">Trier par</label>
           <div class="order-by-buttons">
             <button class="first-button" onclick="clickOrderBy()">
-              Popularité
+              <span>Popularité</span>
               <img src="assets/icons/down-chevron.png" class="not-clicked"/>
               <img src="assets/icons/up-chevron.png" class="clicked"/>
             </button>
             <div class="clicked"></div>
-            <button class="secondary-buttons clicked">Date</button>
+            <button class="secondary-buttons clicked" onclick="secondaryButtonsClick(this)">Date</button>
             <div class="clicked"></div>
-            <button class="secondary-buttons clicked">Titre</button>
+            <button class="secondary-buttons clicked" onclick="secondaryButtonsClick(this)">Titre</button>
           </div>
         </div>
       <div class="photograph-creations"></div>

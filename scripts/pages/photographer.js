@@ -2,6 +2,14 @@
 var photographerName;
 let params = (new URL(document.location)).searchParams;
 let photographerId = params.get('photographerId')
+let likes = 0 ;
+let data = []
+
+const photographHeader = document.querySelector(".photograph-header");
+const photographCreations = document.querySelector(".photograph-creations")
+const photographDetails = document.querySelector(".photograph-details")
+
+
 async function fetchData(){
     const res = await fetch('data/photographers.json')
     const jsonRes = await res.json()
@@ -22,26 +30,15 @@ async function getMediasByPhotographerId(id,medias){
     return mediasData
 }
 async function displayData(photographer , medias) {
-    const photographHeader = document.querySelector(".photograph-header");
-    const photographCreations = document.querySelector(".photograph-creations")
-    const photographDetails = document.querySelector(".photograph-details")
     const photographerModel = photographerFactory(photographer);
-    let likes = 0 ; 
-
     photographerName = photographerModel.name
     const userDescriptionDOM = photographerModel.getUserDescriptionDOM();
     photographHeader.insertBefore(userDescriptionDOM , photographHeader.firstChild);
     const img = document.createElement( 'img' )
     img.setAttribute("src", photographerModel.picture)
     img.setAttribute("alt", photographerModel.name)
-    photographHeader.appendChild(img)
-
-    medias.forEach(media => { 
-        const mediaModel = photographerMediaFactory(media)
-        const mediaCardDOM = mediaModel.getMediaCardDOM()
-        photographCreations.appendChild(mediaCardDOM)
-        likes+= mediaModel.likes
-    })
+    photographHeader.appendChild(img) 
+    displayMedias(medias)
     const likeDetails = document.createElement('div')
     likeDetails.classList.add('like-details')
     const totalLikes = document.createElement('span')
@@ -57,8 +54,20 @@ async function displayData(photographer , medias) {
     photographDetails.appendChild(pricing)
 
 }
+function displayMedias(medias, filter) {
+    if (filter === 'Date') medias.sort((a, b) => ( Date.parse(b.date) - Date.parse(a.date)))
+    else if (filter === 'Titre') medias.sort((a,b) => (a.title > b.title) ? 1 : ((b.title > a.title) ? -1 : 0))
+    else medias.sort((a, b) => parseFloat(b.likes) - parseFloat(a.likes));
+    medias.forEach(media => {
+        const mediaModel = photographerMediaFactory(media)
+        const mediaCardDOM = mediaModel.getMediaCardDOM()
+        photographCreations.appendChild(mediaCardDOM)
+        likes+= mediaModel.likes
+    }
+    )
+}
 async function init() {
-    const data = await fetchData()
+    data = await fetchData()
     const photographer = await getPhotographerById(photographerId,data.photographers)
     const medias = await getMediasByPhotographerId(photographerId,data.media)
     displayData( photographer, medias  )
