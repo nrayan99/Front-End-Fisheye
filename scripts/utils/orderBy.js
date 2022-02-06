@@ -21,7 +21,6 @@ async function secondaryButtonsClick(e) {
   clickOrderBy()
   photographCreations.innerHTML=''
   photographDetails.innerHTML=''
-  const medias = await getMediasByPhotographerId(photographerId,data.media)
-  displayMedias(medias, actualButtonText)
+  displayMedias(mediasData, actualButtonText)
   displayPhotographDetails(price)
 }

@@ -9,7 +9,7 @@
   </head>
   <body>
     <header>
-      <img src="assets/images/logo.png" class="logo" />
+     <a href="index.html"><img src="assets/images/logo.png" class="logo" href="Fisheye Home Page"/></a>
     </header>
     <main id="main">
       <div class="photograph-header">
@@ -18,15 +18,19 @@
        <div class="order-by">
           <label for="order-by">Trier par</label>
           <div class="order-by-buttons">
-            <button class="first-button" onclick="clickOrderBy()">
+            <button id='order-by' class="first-button" onclick="clickOrderBy()" role="button" aria-haspopup="listbox" aria-expanded="true">
               <span>Popularité</span>
               <img src="assets/icons/down-chevron.png" class="not-clicked"/>
               <img src="assets/icons/up-chevron.png" class="clicked"/>
             </button>
-            <div class="clicked"></div>
-            <button class="secondary-buttons clicked" onclick="secondaryButtonsClick(this)">Date</button>
-            <div class="clicked"></div>
-            <button class="secondary-buttons clicked" onclick="secondaryButtonsClick(this)">Titre</button>
+            <ul role="listbox" aria-activedescendant aria-selected="true" aria-labelledby="order-by">
+              <div class="clicked"></div>
+              <button role="option" class="secondary-buttons clicked" onclick="secondaryButtonsClick(this)">Date</button>
+              <div class="clicked"></div>
+              <button role="option" class="secondary-buttons clicked" onclick="secondaryButtonsClick(this)">Titre</button>
+            </ul>
+              
+         
           </div>
         </div>
       <div class="photograph-creations"></div>
@@ -35,24 +39,40 @@
     <div id="contact_modal">
 			<div class="modal">
 				<header>
-          <h2>Contactez-moi</h2>
+          <h1>Contactez-moi</h1>
           <img src="assets/icons/close.svg" onclick="closeModal()" />
         </header>
-				<form>
+				<form  onsubmit="return handleSubmit(event)">
 					<div>
-						<label>Prénom</label>
-						<input />
+						<label for="firstName">Prénom</label>
+						<input id="firstName" />
+            <label for="lastName">Nom</label>
+						<input id="lastName" />
+            <label for="email">Email</label>
+						<input id="email"/>
+            <label for="yourMessage">Votre message</label>
+						<textarea id="yourMessage"></textarea>
 					</div>
           <button class="contact_button">Envoyer</button>
-
 				</form>
 			</div>
 		</div>
+    <div id="lightbox_modal">
+			<div class="lightbox">
+        <a onclick="prev()"><img src="assets/icons/prev.png" alt='image precedente'/></a>
+        <div class="lightbox-content"></div>
+        <div class="lightbox-right">
+          <img src="assets/icons/dark-close.png" alt="Fermer la lightbox" class='close' onclick="closeLightbox()" />
+          <a onclick="next()"><img src="assets/icons/next.png" alt='image suivante' /></a>
+        </div>
+			</div>
+		</div>
+    <script src="/scripts/pages/photographer.js"></script>
     <script src="scripts/utils/orderBy.js"></script>
     <script src="scripts/utils/like.js"></script>
     <script src="scripts/factories/photographer.js"></script>
     <script src="scripts/factories/photographerMedia.js"></script>
-    <script src="/scripts/pages/photographer.js"></script>
     <script src="/scripts/utils/contactForm.js"></script>
+    <script src="scripts/utils/lightbox.js"></script>
   </body>
 </html>

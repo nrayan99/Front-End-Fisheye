@@ -5,9 +5,13 @@ let photographerId = params.get('photographerId')
 let likes = 0 ;
 let data = []
 let price = 0;
+let mediasData = []
+let links = []
+let indexModal = 0
 const photographHeader = document.querySelector(".photograph-header");
 const photographCreations = document.querySelector(".photograph-creations")
 const photographDetails = document.querySelector(".photograph-details")
+const modal = document.getElementById("contact_modal");
 
 
 async function fetchData(){
@@ -23,11 +27,9 @@ async function getPhotographerById(id,photographers) {
     return photographerData
 }
 async function getMediasByPhotographerId(id,medias){
-    var mediasData = [];
     medias.forEach(media => {
         if (media.photographerId == id)  mediasData.push(media)
     });
-    return mediasData
 }
 async function displayData(photographer , medias) {
     const photographerModel = photographerFactory(photographer);
@@ -41,6 +43,8 @@ async function displayData(photographer , medias) {
     displayMedias(medias)
     price = photographerModel.price
     displayPhotographDetails(price)
+    modal.querySelector('h1').textContent += ' '+ photographerName
+    modal.setAttribute('aria-labelledby', modal.querySelector('h1').textContent)
 }
 function displayMedias(medias, filter) {
     likes=0
@@ -58,6 +62,18 @@ function displayMedias(medias, filter) {
     for (const heart of hearts) {
      heart.addEventListener('click', event=>(toggleLike(event)))
     }
+    links = document.querySelectorAll('.photograph-creations a')
+    let i = 0;
+    links.forEach(link=> {
+        let j = i 
+        link.addEventListener("click", function(e){
+        indexModal = j
+        e.preventDefault();
+        openLightbox()
+
+        });
+        i++
+    })
 }
 function displayPhotographDetails(price) {
     const likeDetails = document.createElement('div')
@@ -79,7 +95,7 @@ async function init() {
     data = await fetchData()
     const photographer = await getPhotographerById(photographerId,data.photographers)
     const medias = await getMediasByPhotographerId(photographerId,data.media)
-    displayData( photographer, medias  )
+    displayData( photographer, mediasData  )
 };
 
 init()

@@ -8,6 +8,9 @@ function photographerMediaFactory(data) {
         const article = document.createElement( 'article' );
         const media = video ? document.createElement( 'video' ) : document.createElement( 'img' )
         media.setAttribute('src', video ? mediaVideo : mediaPicture)
+        media.setAttribute(video ? 'title':'alt', title)
+        const mediaLink = document.createElement( 'a' )
+        mediaLink.href = video ? mediaVideo : mediaPicture
         const h3 = document.createElement('h3')
         const likesNb = document.createElement( 'span' )
         const cardInfos = document.createElement('div')
@@ -20,11 +23,12 @@ function photographerMediaFactory(data) {
         cardInfos.classList.add('card-infos')
         likesNb. textContent = likes
         h3.textContent = title
+        mediaLink.appendChild(media)
         cardLikes.appendChild(likesNb)
         cardLikes.appendChild(heart)
         cardInfos.appendChild(h3)
         cardInfos.appendChild(cardLikes)
-        article.appendChild(media)
+        article.appendChild(mediaLink)
         article.appendChild(cardInfos);
         return (article);
     }
