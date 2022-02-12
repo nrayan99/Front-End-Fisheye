@@ -9,6 +9,7 @@ function photographerMediaFactory(data) {
         const media = video ? document.createElement( 'video' ) : document.createElement( 'img' )
         media.setAttribute('src', video ? mediaVideo : mediaPicture)
         media.setAttribute(video ? 'title':'alt', title)
+        media.setAttribute('lang','en-US')
         const mediaLink = document.createElement( 'a' )
         mediaLink.href = video ? mediaVideo : mediaPicture
         const h3 = document.createElement('h3')
