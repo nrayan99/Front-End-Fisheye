@@ -61,6 +61,11 @@ function displayMedias(medias, filter) {
     const hearts = document.querySelectorAll(".photograph-creations .heart-img")
     for (const heart of hearts) {
      heart.addEventListener('click', event=>(toggleLike(event)))
+     heart.addEventListener('keyup', event=>{
+         if (event.keyCode === 13) {
+            toggleLike(event)}
+         }
+     )
     }
     links = document.querySelectorAll('.photograph-creations a')
     let i = 0;

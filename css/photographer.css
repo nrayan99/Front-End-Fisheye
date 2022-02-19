@@ -140,6 +140,7 @@
     width: 18px;
     height: 18px;
     margin-left: 10px;
+    cursor: pointer;
   }
 .photograph-creations .card-infos .card-likes span{
     font-size: 18px;

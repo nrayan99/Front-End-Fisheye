@@ -20,6 +20,7 @@ function photographerMediaFactory(data) {
         const heart = document.createElement('img')
         heart.setAttribute('src','assets/icons/heart.png')
         heart.setAttribute('alt','likes')
+        heart.setAttribute('tabindex', 0)
         heart.classList.add('heart-img')
         cardInfos.classList.add('card-infos')
         likesNb. textContent = likes
