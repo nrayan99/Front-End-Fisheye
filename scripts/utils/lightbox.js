@@ -6,6 +6,7 @@ const closeLightboxButton = document.querySelector(".close-lightbox")
 
 closeLightboxButton.addEventListener("click", event => closeLightbox())
 
+// Display the media in the lightbox
 function displayContent() {
     lightboxContent.innerHTML = ''
     const mediaContainer = document.createElement('div')
@@ -43,6 +44,7 @@ function prev() {
     displayContent()
 }
 
+// manage the use of the arrow keys to navigate in creations
 function keyHandler(e){
     switch (e.key){
         case 'ArrowLeft':

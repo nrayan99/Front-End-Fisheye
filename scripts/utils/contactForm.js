@@ -16,9 +16,9 @@ function closeModal() {
     modal.style.display = "none";
 }
 
+// Handle the submitting of the contact form
 function handleSubmit(e) {
     e.preventDefault()
-    
     const firstName = modal.querySelector('#firstName').value
     const lastName = modal.querySelector('#lastName').value
     const email = modal.querySelector('#email').value

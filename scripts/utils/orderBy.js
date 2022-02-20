@@ -6,6 +6,7 @@ const secondaryFilterButtons = document.querySelectorAll(".order-by-buttons ul b
 secondaryFilterButtons.forEach(button => button.addEventListener('click', function(){secondaryButtonsClick(this)} ))
 orderByButton.addEventListener('click', event => clickOrderBy())
 
+// handle the display of the other filters
 function clickOrderBy() {
   const notClickedList = document.querySelectorAll(".not-clicked")
   const clickedList = document.querySelectorAll(".clicked")
@@ -19,7 +20,7 @@ function clickOrderBy() {
   }
 }
 
-
+// handle the click on a different filter
 async function secondaryButtonsClick(e) {
   const actualButtonText = e.textContent
   const filter = document.querySelectorAll(".order-by-buttons button span")

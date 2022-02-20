@@ -14,11 +14,12 @@ const photographCreations = document.querySelector(".photograph-creations")
 const photographDetails = document.querySelector(".photograph-details")
 const modal = document.getElementById("contact_modal");
 
+// get the data from the json
 async function fetchData(){
     const res = await fetch('data/photographers.json')
     const jsonRes = await res.json()
     return jsonRes
-  }
+}
 async function getPhotographerById(id,photographers) {
     var photographerData;
     photographers.forEach(photographer => {
@@ -31,6 +32,8 @@ async function getMediasByPhotographerId(id,medias){
         if (media.photographerId == id)  mediasData.push(media)
     });
 }
+
+// display creations, photographer profile picture and other informations about the photographer
 async function displayData(photographer , medias) {
     const photographerModel = new photographerFactory('photographer',photographer);
     photographerName = photographerModel.name
@@ -46,6 +49,7 @@ async function displayData(photographer , medias) {
     modal.querySelector('h1').textContent += ' '+ photographerName
     modal.setAttribute('aria-labelledby', 'contact-me')
 }
+// display creations
 function displayMedias(medias, filter) {
     likes=0
     if (filter === 'Date') medias.sort((a, b) => ( Date.parse(b.date) - Date.parse(a.date)))
@@ -58,6 +62,7 @@ function displayMedias(medias, filter) {
         likes+= mediaModel.likes
     }
     )
+    // allow to like creations
     const hearts = document.querySelectorAll(".photograph-creations .heart-img")
     for (const heart of hearts) {
      heart.addEventListener('click', event=>(toggleLike(event)))
@@ -69,6 +74,7 @@ function displayMedias(medias, filter) {
     }
     links = document.querySelectorAll('.photograph-creations a')
     let i = 0;
+    // allow to open the lightbox
     links.forEach(link=> {
         let j = i 
         link.addEventListener("click", function(e){
@@ -80,6 +86,8 @@ function displayMedias(medias, filter) {
         i++
     })
 }
+
+// display photographers details in right bottom
 function displayPhotographDetails(price) {
     const likeDetails = document.createElement('div')
     likeDetails.classList.add('like-details')
