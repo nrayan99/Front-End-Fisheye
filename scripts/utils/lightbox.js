@@ -2,12 +2,17 @@
 /* eslint-disable no-undef */
 const lightbox = document.getElementById('lightbox_modal')
 const lightboxContent = document.querySelector('.lightbox-content')
+const closeLightboxButton = document.querySelector(".close-lightbox")
+
+closeLightboxButton.addEventListener("click", event => closeLightbox())
+
 function displayContent() {
     lightboxContent.innerHTML = ''
     const mediaContainer = document.createElement('div')
     const media = document.createElement(links[indexModal].querySelector('video')? 'video' : 'img' )
     media.src = links[indexModal].href;
     media.setAttribute('controls', 'controls')
+    media.setAttribute('id','lightbox-media')
     const mediaName = links[indexModal].firstChild.alt || links[indexModal].firstChild.title
     media.setAttribute('alt', mediaName)
     if (links[indexModal].querySelector('video') )  media.setAttribute('title', mediaName)

@@ -13,36 +13,34 @@
     </header>
     <main id="main">
       <div class="photograph-header">
-        <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
+        <button class="contact_button">Contactez-moi</button>
       </div>
        <div class="order-by">
           <label>Trier par</label>
           <div class="order-by-buttons">
-            <button id='order-by' class="first-button" onclick="clickOrderBy()" role="button" aria-haspopup="listbox" aria-expanded="true" aria-label="Trier par">
+            <button id='order-by' class="first-button" role="button" aria-haspopup="listbox" aria-expanded="true" aria-label="Trier par">
               <span>Popularité</span>
               <img src="assets/icons/down-chevron.png" class="not-clicked" alt="icon chevron down"/>
               <img src="assets/icons/up-chevron.png" class="clicked" alt="icon chevron up"/>
             </button>
             <ul role="listbox" aria-activedescendant aria-selected="true" aria-labelledby="order-by">
               <div class="clicked"></div>
-              <button role="option" class="secondary-buttons clicked" onclick="secondaryButtonsClick(this)">Date</button>
+              <button role="option" class="secondary-buttons clicked">Date</button>
               <div class="clicked"></div>
-              <button role="option" class="secondary-buttons clicked" onclick="secondaryButtonsClick(this)">Titre</button>
+              <button role="option" class="secondary-buttons clicked">Titre</button>
             </ul>
-              
-         
           </div>
         </div>
       <div class="photograph-creations"></div>
       <div class="photograph-details"></div>
     </main>
     <div id="contact_modal">
-			<div class="modal">
+			<div class="modal" role="dialog" aria-labelledby="contact-me">
 				<header>
           <h1 id="contact-me">Contactez-moi</h1>
-          <img src="assets/icons/close.svg" onclick="closeModal()" alt="Fermer la modal de contact" />
+          <img src="assets/icons/close.svg" class="close-contact" alt="Fermer la modal de contact" />
         </header>
-				<form onsubmit="return handleSubmit(event)">
+				<form>
 					<div>
 						<label for="firstName">Prénom</label>
 						<input id="firstName" required minlength="3"/>
@@ -58,11 +56,11 @@
 			</div>
 		</div>
     <div id="lightbox_modal">
-			<div class="lightbox">
+			<div class="lightbox" role="dialog" aria-labelledby="lightbox-media">
         <a onclick="prev()"><img src="assets/icons/prev.png" alt='image precedente'/></a>
         <div class="lightbox-content"></div>
         <div class="lightbox-right">
-          <img src="assets/icons/dark-close.png" alt="Fermer la lightbox" class='close' onclick="closeLightbox()" />
+          <img src="assets/icons/dark-close.png" alt="Fermer la lightbox" class='close-lightbox'/>
           <a onclick="next()"><img src="assets/icons/next.png" alt='image suivante' /></a>
         </div>
 			</div>

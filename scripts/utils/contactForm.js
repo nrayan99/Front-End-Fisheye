@@ -1,5 +1,12 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-undef */
+const closeContactButton = document.querySelector(".close-contact")
+const contactButton = document.querySelector(".contact_button")
+const submitForm = document.querySelector(".modal form")
+
+submitForm.addEventListener('submit', event => handleSubmit(event))
+contactButton.addEventListener('click', event => displayModal())
+closeContactButton.addEventListener('click', event => closeModal())
 
 function displayModal() {
 	modal.style.display = "block";

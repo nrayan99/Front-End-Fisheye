@@ -14,7 +14,6 @@ const photographCreations = document.querySelector(".photograph-creations")
 const photographDetails = document.querySelector(".photograph-details")
 const modal = document.getElementById("contact_modal");
 
-
 async function fetchData(){
     const res = await fetch('data/photographers.json')
     const jsonRes = await res.json()

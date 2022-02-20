@@ -1,5 +1,11 @@
 /* eslint-disable no-undef */
 /* eslint-disable no-unused-vars */
+const orderByButton = document.getElementById("order-by")
+const secondaryFilterButtons = document.querySelectorAll(".order-by-buttons ul button")
+
+secondaryFilterButtons.forEach(button => button.addEventListener('click', function(){secondaryButtonsClick(this)} ))
+orderByButton.addEventListener('click', event => clickOrderBy())
+
 function clickOrderBy() {
   const notClickedList = document.querySelectorAll(".not-clicked")
   const clickedList = document.querySelectorAll(".clicked")
