@@ -1,5 +1,15 @@
 // eslint-disable-next-line no-unused-vars
-function photographerFactory(data) {
+class photographerFactory {
+    constructor(type, data){
+        switch(type){
+            case 'photographer':
+                return new Photographer(data)
+            default:
+                throw 'Unknown type format'
+        }
+    }
+}
+function Photographer(data) {
     const { name, portrait, tagline, country, city, price, id } = data;
 
     const picture = `assets/photographers/${portrait}`;

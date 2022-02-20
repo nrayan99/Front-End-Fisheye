@@ -310,6 +310,9 @@ form textarea {
     aspect-ratio: 1/1;
     width: 1050px;
 }
+.lightbox-content video{
+    aspect-ratio: 1.2;
+}
 #lightbox_modal .lightbox .close{
     width: 42px;
     height: 42px;

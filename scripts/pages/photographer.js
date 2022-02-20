@@ -33,7 +33,7 @@ async function getMediasByPhotographerId(id,medias){
     });
 }
 async function displayData(photographer , medias) {
-    const photographerModel = photographerFactory(photographer);
+    const photographerModel = new photographerFactory('photographer',photographer);
     photographerName = photographerModel.name
     const userDescriptionDOM = photographerModel.getUserDescriptionDOM();
     photographHeader.insertBefore(userDescriptionDOM , photographHeader.firstChild);
@@ -53,7 +53,7 @@ function displayMedias(medias, filter) {
     else if (filter === 'Titre') medias.sort((a,b) => (a.title > b.title) ? 1 : ((b.title > a.title) ? -1 : 0))
     else medias.sort((a, b) => parseFloat(b.likes) - parseFloat(a.likes));
     medias.forEach(media => {
-        const mediaModel = photographerMediaFactory(media)
+        const mediaModel = new photographerMediaFactory(media.video ? 'video': 'image' ,media)
         const mediaCardDOM = mediaModel.getMediaCardDOM()
         photographCreations.appendChild(mediaCardDOM)
         likes+= mediaModel.likes
