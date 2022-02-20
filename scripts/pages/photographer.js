@@ -1,4 +1,5 @@
-//Mettre le code JavaScript lié à la page photographer.html
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-undef */
 var photographerName;
 let params = (new URL(document.location)).searchParams;
 let photographerId = params.get('photographerId')
@@ -99,8 +100,9 @@ function displayPhotographDetails(price) {
 async function init() {
     data = await fetchData()
     const photographer = await getPhotographerById(photographerId,data.photographers)
+    // eslint-disable-next-line no-unused-vars
     const medias = await getMediasByPhotographerId(photographerId,data.media)
     displayData( photographer, mediasData  )
-};
+}
 
 init()

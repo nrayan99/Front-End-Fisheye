@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-undef */
 const lightbox = document.getElementById('lightbox_modal')
 const lightboxContent = document.querySelector('.lightbox-content')
 function displayContent() {
@@ -5,9 +7,10 @@ function displayContent() {
     const mediaContainer = document.createElement('div')
     const media = document.createElement(links[indexModal].querySelector('video')? 'video' : 'img' )
     media.src = links[indexModal].href;
-    mediaName = links[indexModal].firstChild.alt || links[indexModal].firstChild.title 
-    media.setAttribute(links[indexModal].querySelector('video') ? 'title' : 'alt', mediaName)
-    lightboxTitle = document.createElement( 'span' )
+    media.setAttribute('controls', 'controls')
+    const mediaName = links[indexModal].firstChild.alt || links[indexModal].firstChild.title 
+    media.setAttribute('alt', mediaName)
+    const lightboxTitle = document.createElement( 'span' )
     lightboxTitle.textContent = mediaName
     mediaContainer.appendChild(media)
     lightboxContent.appendChild(mediaContainer)

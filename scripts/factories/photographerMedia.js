@@ -1,5 +1,7 @@
+// eslint-disable-next-line no-unused-vars
 function photographerMediaFactory(data) {
-    const { title, image, video, likes, date, price, id } = data;
+    const { title, image, video, likes} = data;
+    // eslint-disable-next-line no-undef
     const photographerFolder = photographerName.split(" ")[0]
     const mediaPicture = `assets/medias/${photographerFolder}/${image}`;
     const mediaVideo = `assets/medias/${photographerFolder}/${video}`;
@@ -8,7 +10,7 @@ function photographerMediaFactory(data) {
         const article = document.createElement( 'article' );
         const media = video ? document.createElement( 'video' ) : document.createElement( 'img' )
         media.setAttribute('src', video ? mediaVideo : mediaPicture)
-        media.setAttribute(video ? 'title':'alt', title)
+        media.setAttribute('alt', title)
         media.setAttribute('lang','en-US')
         const mediaLink = document.createElement( 'a' )
         mediaLink.href = video ? mediaVideo : mediaPicture
