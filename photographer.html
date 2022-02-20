@@ -45,13 +45,13 @@
 				<form  onsubmit="return handleSubmit(event)">
 					<div>
 						<label for="firstName">Prénom</label>
-						<input id="firstName" />
+						<input id="firstName" required minlength="3"/>
             <label for="lastName">Nom</label>
-						<input id="lastName" />
+						<input id="lastName" required minlength="3"/>
             <label for="email">Email</label>
-						<input id="email"/>
+						<input id="email" type="email" required/>
             <label for="yourMessage">Votre message</label>
-						<textarea id="yourMessage"></textarea>
+						<textarea id="yourMessage" required minlength="5"></textarea>
 					</div>
           <button class="contact_button">Envoyer</button>
 				</form>
