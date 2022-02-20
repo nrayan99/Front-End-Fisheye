@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 function toggleLike(e){
     const totalLikes = document.querySelector('.photograph-details span')
     if (e.target.classList.contains('clicked')) {

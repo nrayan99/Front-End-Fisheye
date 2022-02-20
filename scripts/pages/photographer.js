@@ -45,7 +45,7 @@ async function displayData(photographer , medias) {
     price = photographerModel.price
     displayPhotographDetails(price)
     modal.querySelector('h1').textContent += ' '+ photographerName
-    modal.setAttribute('aria-labelledby', modal.querySelector('h1').textContent)
+    modal.setAttribute('aria-labelledby', 'contact-me')
 }
 function displayMedias(medias, filter) {
     likes=0

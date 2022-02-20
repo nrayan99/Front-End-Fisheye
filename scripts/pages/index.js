@@ -1,6 +1,6 @@
+/* eslint-disable no-undef */
 
 async function getPhotographers() {
-        // Penser à remplacer par les données récupérées dans le json
     const res = await fetch('data/photographers.json')
     const jsonRes = await res.json()
     const photographers = await jsonRes.photographers
@@ -16,13 +16,13 @@ async function getPhotographers() {
             const userCardDOM = photographerModel.getUserCardDOM();
             photographersSection.appendChild(userCardDOM);
         });
-    };
+    }
 
     async function init() {
         // Récupère les datas des photographes
         const { photographers } = await getPhotographers();
         displayData(photographers);
-    };
+    }
     
     init();
     

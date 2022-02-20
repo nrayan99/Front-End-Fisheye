@@ -10,6 +10,8 @@ function photographerMediaFactory(data) {
         const article = document.createElement( 'article' );
         const media = video ? document.createElement( 'video' ) : document.createElement( 'img' )
         media.setAttribute('src', video ? mediaVideo : mediaPicture)
+        video && media.setAttribute('title', title)
+        if (video) media.textContent = 'Votre navigateur ne supporte pas les vidéos'
         media.setAttribute('alt', title)
         media.setAttribute('lang','en-US')
         const mediaLink = document.createElement( 'a' )

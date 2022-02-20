@@ -8,8 +8,9 @@ function displayContent() {
     const media = document.createElement(links[indexModal].querySelector('video')? 'video' : 'img' )
     media.src = links[indexModal].href;
     media.setAttribute('controls', 'controls')
-    const mediaName = links[indexModal].firstChild.alt
+    const mediaName = links[indexModal].firstChild.alt || links[indexModal].firstChild.title
     media.setAttribute('alt', mediaName)
+    if (links[indexModal].querySelector('video') )  media.setAttribute('title', mediaName)
     const lightboxTitle = document.createElement( 'span' )
     lightboxTitle.textContent = mediaName
     mediaContainer.appendChild(media)
