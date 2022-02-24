@@ -10,10 +10,14 @@ closeContactButton.addEventListener('click', event => closeModal())
 
 function displayModal() {
 	modal.style.display = "block";
+    modal.querySelector('#firstName').focus()
+    document.addEventListener('keydown', closeModalKeyHandler)
 }
 
 function closeModal() {
     modal.style.display = "none";
+    document.removeEventListener('keydown', closeModalKeyHandler)
+    contactButton.focus()
 }
 
 // Handle the submitting of the contact form
@@ -27,4 +31,10 @@ function handleSubmit(e) {
     modal.getElementsByTagName('form')[0].reset()
     closeModal()
     return false
+}
+
+function closeModalKeyHandler(e) {
+    if (e.key === "Escape") {
+        closeModal()
+    }
 }
